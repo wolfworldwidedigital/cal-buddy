@@ -1,19 +1,19 @@
 import {
   CopilotRuntime,
-  GroqAdapter,
+  LlamaAdapter,
   copilotRuntimeNextJSAppRouterEndpoint,
 } from "@copilotkit/runtime";
 import Groq from "groq-sdk";
 import { NextRequest } from "next/server";
 
-const groq = new Groq({ apiKey: process.env["GROQ_API_KEY"] });
+const Llama = new Llama({ apiKey: process.env["LLAMA_API_KEY"] });
 
 const copilotKit = new CopilotRuntime();
 
-const serviceAdapter = new GroqAdapter({
+const serviceAdapter = new LlamaAdapter({
   // @ts-ignore
   groq,
-  model: "llama3-groq-70b-8192-tool-use-preview",
+  model: "llama3.2",
 });
 
 export const POST = async (req: NextRequest) => {
